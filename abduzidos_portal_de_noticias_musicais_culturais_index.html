@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ABDUZIDOS — Home</title>
+  <meta name="description" content="ABDUZIDOS é um portal de notícias, críticas e análises sobre música e cultura no Brasil e no mundo." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta property="og:title" content="ABDUZIDOS — Portal de Notícias Musicais e Culturais" />
+  <meta property="og:description" content="Notícias, entrevistas, lançamentos e críticas do mundo musical/cultural." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:image" content="/mnt/data/LOGOTIPO ABDUZIDOS PRETO.PNG" />
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --card:#121214;
+      --muted:#9aa0a6;
+      --brand:#ffd300;
+      --accent:#b7ff3c;
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:#f9fafb;font-family:Manrope,system-ui}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,100% - 40px);margin-inline:auto}
+    header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.6));backdrop-filter: blur(10px);border-bottom:1px solid #1f1f22}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{height:36px;width:auto;filter: drop-shadow(0 2px 8px rgba(0,0,0,.6));}
+    .wordmark{font-weight:900;letter-spacing:.8px}
+    .badge{font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;background:var(--brand);color:#111}
+    nav ul{display:flex;gap:18px;list-style:none;padding:0;margin:0}
+    nav a:hover{color:var(--brand)}
+    .cta{display:inline-flex;align-items:center;gap:8px;border:1px solid #2a2a2e;border-radius:999px;padding:10px 14px;background:#151517}
+    .cta:hover{border-color:#3a3a3f}
+    .hero{position:relative;padding:56px 0 28px}
+    .hero .headline{font-size:clamp(28px,4.5vw,56px);line-height:1.03;font-weight:800}
+    .hero .sub{color:var(--muted);max-width:60ch;margin-top:10px}
+    .hero .highlights{margin-top:24px;display:flex;flex-wrap:wrap;gap:14px}
+    .pill{padding:8px 12px;border:1px solid #2a2a2e;border-radius:999px}
+    .pill strong{color:var(--brand)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin:28px 0 60px}
+    .card{grid-column:span 4;background:var(--card);border:1px solid #202024;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:100%;position:relative}
+    .card.featured{grid-column:span 8}
+    .thumb{aspect-ratio:16/9;background:#0f1011;border-bottom:1px solid #202024}
+    .content{padding:16px}
+    .kicker{color:var(--brand);font-size:12px;font-weight:800;text-transform:uppercase}
+    .title{font-size:clamp(18px,2.1vw,26px);font-weight:800;margin:.35rem 0}
+    .excerpt{color:#cfd3d7;margin-top:8px}
+    .readmore{margin-top:auto;color:#111;background:var(--brand);border-radius:10px;padding:10px 12px;font-weight:800;display:inline-flex;justify-content:center}
+    .icon{position:absolute;top:16px;right:16px;font-size:26px;color:var(--brand)}
+    footer{border-top:1px solid #1f1f22;margin-top:40px}
+    .footwrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;padding:20px 0;color:#a9afb7}
+    @media (max-width: 960px){.card{grid-column:span 6}.card.featured{grid-column:span 12}}
+    @media (max-width: 640px){.card{grid-column:span 12}nav ul{display:none}}
+  </style>
+  <script src="https://kit.fontawesome.com/2d3e32a9d3.js" crossorigin="anonymous"></script>
+<style>
+    /* --- Preview overlay (intercept links) --- */
+    #previewOverlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);display:none;z-index:50}
+    #previewShell{position:absolute;inset:40px 24px 24px 24px;border:1px solid #202024;border-radius:16px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.6);background:#0b0b0c}
+    #previewToolbar{height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #1f1f22;background:#111113}
+    #previewToolbar .left{display:flex;align-items:center;gap:8px}
+    #previewToolbar button{appearance:none;border:none;background:#ffd300;color:#111;font-weight:800;border-radius:10px;padding:8px 12px;cursor:pointer}
+    #previewTitle{font-size:14px;color:#cfd3d7}
+    #previewFrame{position:absolute;top:46px;left:0;right:0;bottom:0;width:100%;height:calc(100% - 46px);border:0;background:#0b0b0c}
+    @media (max-width: 720px){#previewShell{inset:0}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <img src="/mnt/data/LOGOTIPO ABDUZIDOS PRETO.PNG" alt="Logo ABDUZIDOS" />
+        <span class="wordmark">ABDUZIDOS</span>
+        <span class="badge">PORTAL</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="noticias.html">Notícias</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="igor-e-gui.html">Igor &amp; Gui</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#newsletter">Assinar ✦</a>
+    </div>
+  </header>
+
+  <section class="hero container">
+    <h1 class="headline">ABDUZIDOS — inteligência criativa para música e cultura.</h1>
+    <p class="sub">Somos um estúdio/label e um portal. Escolha abaixo o que você quer acessar agora.</p>
+    <div class="highlights">
+      <a class="pill" href="noticias.html">Portal de <strong>Notícias</strong></a>
+      <a class="pill" href="servicos.html"><strong>Serviços</strong> para artistas</a>
+      <a class="pill" href="produtos.html"><strong>Produtos</strong> (Drum Kits, Beats, Merch)</a>
+      <a class="pill" href="igor-e-gui.html"><strong>Igor &amp; Gui</strong> — artistas do selo</a>
+      <a class="pill" href="contato.html"><strong>Contato</strong></a>
+    </div>
+  </section>
+
+  <main class="container grid">
+    <article class="card featured">
+      <i class="fas fa-newspaper icon"></i>
+      <div class="thumb"></div>
+      <div class="content">
+        <div class="kicker">Comece por aqui</div>
+        <h2 class="title"><a href="noticias.html">Leia as últimas do music business</a></h2>
+        <p class="excerpt">Curadoria semanal de lançamentos, movimentos da indústria, entrevistas e guias práticos.</p>
+        <a class="readmore" href="noticias.html">Ir para Notícias</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <i class="fas fa-lightbulb icon"></i>
+      <div class="content">
+        <div class="kicker">Serviços</div>
+        <h3 class="title"><a href="servicos.html">Consultorias, Produção e Editora</a></h3>
+        <p class="excerpt">Mentoria de lançamento, estúdio completo e gestão editorial.</p>
+        <a class="readmore" href="servicos.html">Conhecer</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <i class="fas fa-music icon"></i>
+      <div class="content">
+        <div class="kicker">Produtos</div>
+        <h3 class="title"><a href="produtos.html">Drum Kits, Beats e Merch</a></h3>
+        <p class="excerpt">Sons originais, catálogos para voz e coleções do selo.</p>
+        <a class="readmore" href="produtos.html">Ver produtos</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <i class="fas fa-user-friends icon"></i>
+      <div class="content">
+        <div class="kicker">Artistas</div>
+        <h3 class="title"><a href="igor-e-gui.html">Igor &amp; Gui</a></h3>
+        <p class="excerpt">Conheça a dupla do nosso selo: bio, releases, agenda e contato.</p>
+        <a class="readmore" href="igor-e-gui.html">Entrar na página</a>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <div class="widget" id="newsletter">
+        <h3>Newsletter</h3>
+        <p style="margin-top:0;color:#cfd3d7">Receba um resumo semanal com os melhores links.</p>
+        <form onsubmit="event.preventDefault(); alert('Assinatura demonstrativa.');">
+          <div class="newsletter">
+            <input type="email" required placeholder="Seu e-mail" />
+            <button type="submit">Assinar</button>
+          </div>
+        </form>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="container footwrap">
+      <div style="display:flex;gap:10px;align-items:center">
+        <img src="/mnt/data/LOGOTIPO ABDUZIDOS PRETO.PNG" alt="Logo ABDUZIDOS" style="height:28px;width:auto;border-radius:6px" />
+        <span>© <span id="year"></span> ABDUZIDOS • Todos os direitos reservados</span>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Anuncie</a>
+        <a href="#">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+<!-- Intercepta links e mostra páginas em um preview (somente na prévia do canvas) -->
+<div id="previewOverlay" role="dialog" aria-modal="true" aria-label="Pré-visualização de página">
+  <div id="previewShell">
+    <div id="previewToolbar">
+      <div class="left">
+        <button type="button" id="previewBack">Voltar</button>
+        <span id="previewTitle">Pré-visualização</span>
+      </div>
+      <div class="right" style="display:flex;gap:8px;align-items:center">
+        <a id="previewOpenNew" href="#" target="_blank" rel="noopener" style="color:#ffd300">Abrir em nova aba</a>
+        <button type="button" id="previewClose" title="Fechar">Fechar ✕</button>
+      </div>
+    </div>
+    <iframe id="previewFrame" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+  </div>
+</div>
+
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+  (function(){
+    const overlay = document.getElementById('previewOverlay');
+    const frame = document.getElementById('previewFrame');
+    const titleEl = document.getElementById('previewTitle');
+    const openNew = document.getElementById('previewOpenNew');
+    const backBtn = document.getElementById('previewBack');
+    const closeBtn = document.getElementById('previewClose');
+
+    function openPreview(href){
+      overlay.style.display = 'block';
+      frame.src = href;
+      titleEl.textContent = 'Pré-visualizando: ' + href;
+      openNew.href = href;
+      // bloquear scroll do body
+      document.documentElement.style.overflow = 'hidden';
+    }
+    function closePreview(){
+      overlay.style.display = 'none';
+      frame.src = 'about:blank';
+      document.documentElement.style.overflow = '';
+      if(location.hash === '#preview') history.replaceState(null,'',location.pathname);
+    }
+
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a');
+      if(!a) return;
+      const href = a.getAttribute('href');
+      if(!href) return;
+      const isHtml = /\.html(\?|#|$)/i.test(href);
+      const isIndex = /index\.html(\?|#|$)/i.test(href);
+      // Só intercepta links para outros .html locais (não o index)
+      if(isHtml && !isIndex && !/^https?:/i.test(href)){
+        e.preventDefault();
+        openPreview(href);
+        history.replaceState(null,'', '#preview');
+      }
+    });
+
+    overlay.addEventListener('click', (e)=>{
+      // clique fora do shell fecha
+      if(e.target === overlay) closePreview();
+    });
+    backBtn.addEventListener('click', closePreview);
+    closeBtn.addEventListener('click', closePreview);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePreview(); });
+
+    // Se a página abrir já com hash #preview, mantemos o overlay aberto
+    if(location.hash === '#preview'){
+      // padrão: notícias
+      openPreview('noticias.html');
+    }
+  })();
+</script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
